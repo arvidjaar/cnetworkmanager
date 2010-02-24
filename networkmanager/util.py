@@ -115,6 +115,8 @@ class Table(object):
             for k, v in d.iteritems():
                 if isinstance(v, list):
                     v = ", ".join(v)
+		elif k == "mac-address":
+		    v = ':'.join(["%02X" % ord(x) for x in v])
                 t.row("", k, v)
         return t
 
